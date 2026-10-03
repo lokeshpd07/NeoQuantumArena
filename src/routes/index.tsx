@@ -1,0 +1,36 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, BrainCircuit, ChevronDown, Code2, FlaskConical, Swords, Trophy, Zap } from "lucide-react";
+import { AppHeader, Panel } from "@/components/quantum-shell";
+import { QuantumCircuit } from "@/components/quantum-visuals";
+import { CountUp, GameBackdrop, Reveal, ScrollProgress, TiltCard } from "@/components/quantum-motion";
+import { Button } from "@/components/ui/button";
+
+export const Route = createFileRoute("/")({
+  head: () => ({ meta: [
+    { title: "NeoQuantum Arena — Learn. Build. Battle." },
+    { name: "description", content: "A game-like quantum computing platform for visual learning, circuit simulation, and competitive challenges." },
+    { property: "og:title", content: "NeoQuantum Arena — Learn. Build. Battle." },
+    { property: "og:description", content: "Master quantum computing through interactive missions, visual simulation, and live competition." },
+    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
+  ]}), component: Home,
+});
+
+function Home() {
+  return <div className="relative min-h-screen overflow-hidden"><GameBackdrop /><AppHeader /><ScrollProgress />
+    <main>
+      <section className="relative mx-auto grid min-h-[calc(100vh-4rem)] max-w-[1500px] items-center gap-10 px-4 py-12 md:px-7 lg:grid-cols-[.85fr_1.15fr] lg:py-16">
+        <div className="relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-accent px-3 py-1.5 font-mono text-[11px] font-bold uppercase text-primary"><span className="size-2 rounded-full bg-primary quantum-pulse"/> Season 04 is live</div>
+          <h1 className="max-w-3xl text-5xl font-extrabold leading-[1.02] md:text-7xl">Master quantum.<br/><span className="text-primary">Own the arena.</span></h1>
+          <p className="mt-6 max-w-xl text-base leading-7 text-muted-foreground md:text-lg">Learn by building real circuits, watching quantum states come alive, and competing in skill-based missions.</p>
+          <div className="mt-8 flex flex-wrap gap-3"><Button asChild size="lg" className="btn-shine"><Link to="/dashboard">Enter the arena <ArrowRight className="size-4"/></Link></Button><Button asChild size="lg" variant="secondary"><Link to="/lab"><FlaskConical className="size-4"/> Open quantum lab</Link></Button></div>
+          <div className="mt-10 flex gap-8 border-t border-border pt-5 font-mono text-xs"><div><b className="block text-xl text-foreground"><CountUp to={24} suffix="K+"/></b><span className="text-muted-foreground">active learners</span></div><div><b className="block text-xl text-foreground"><CountUp to={1.8} suffix="M"/></b><span className="text-muted-foreground">circuits run</span></div><div><b className="block text-xl text-foreground"><CountUp to={98}/></b><span className="text-muted-foreground">live quests</span></div></div>
+        </div>
+        <TiltCard className="relative float-slow rounded-md"><div className="absolute -inset-5 -z-10 rounded-full border border-primary/10"/><QuantumCircuit/><div className="absolute -bottom-5 left-5 right-5 grid grid-cols-3 rounded-md border border-border bg-card p-4 shadow-xl"><div><span className="font-mono text-[10px] text-muted-foreground">FIDELITY</span><b className="block text-lg">99.4%</b></div><div><span className="font-mono text-[10px] text-muted-foreground">GATES</span><b className="block text-lg">02</b></div><div><span className="font-mono text-[10px] text-muted-foreground">REWARD</span><b className="block text-lg text-primary">+300 XP</b></div></div></TiltCard>
+        <ChevronDown className="absolute bottom-5 left-1/2 hidden size-5 animate-bounce text-muted-foreground lg:block"/>
+      </section>
+      <section className="border-y border-border bg-card/90 backdrop-blur-sm px-4 py-20 md:px-7"><div className="mx-auto max-w-[1300px]"><Reveal className="mb-10 max-w-2xl"><span className="font-mono text-xs font-bold uppercase text-primary">The learning loop</span><h2 className="mt-3 text-3xl font-extrabold md:text-5xl">Theory becomes instinct.</h2></Reveal><div className="grid gap-4 md:grid-cols-4">{[{Icon:BrainCircuit,title:"01 / Learn",text:"Visual lessons adapt to your skill graph."},{Icon:Code2,title:"02 / Build",text:"Compose circuits with code or gates."},{Icon:Zap,title:"03 / Simulate",text:"See every state and probability shift."},{Icon:Swords,title:"04 / Compete",text:"Turn mastery into rank and rewards."}].map(({Icon,title,text},i)=><Reveal key={title} delay={i*120}><TiltCard className="group h-full rounded-md border border-border bg-card p-7 hover:border-primary/50 hover:bg-accent"><Icon className="size-7 text-primary transition-transform group-hover:scale-110"/><h3 className="mt-8 font-mono text-sm font-bold">{title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p><div className="mt-5 h-1 w-0 rounded-full bg-primary transition-all duration-500 group-hover:w-full"/></TiltCard></Reveal>)}</div></div></section>
+      <section className="mx-auto max-w-[1300px] px-4 py-20 md:px-7"><Reveal><Panel className="grid overflow-hidden lg:grid-cols-[1.2fr_.8fr]"><div className="p-7 md:p-10"><div className="flex items-center gap-2 font-mono text-xs font-bold uppercase text-primary"><Zap className="size-4"/>Weekly challenge</div><h2 className="mt-4 text-3xl font-extrabold">Forge a perfect Bell state.</h2><p className="mt-3 max-w-xl text-muted-foreground">Create maximum entanglement using the fewest gates. Correctness matters. Efficiency wins.</p><div className="mt-7 flex gap-8 font-mono text-xs"><div><span className="text-muted-foreground">TIME LEFT</span><b className="mt-1 block text-lg">02D 14H 08M</b></div><div><span className="text-muted-foreground">REWARD</span><b className="mt-1 block text-lg text-primary">1,200 XP</b></div></div><Button asChild className="mt-8"><Link to="/arena">Accept challenge <ArrowRight className="size-4"/></Link></Button></div><div className="grid place-items-center border-t border-border bg-foreground p-10 text-background lg:border-l lg:border-t-0"><div className="relative grid size-52 place-items-center"><div className="absolute inset-0 rounded-full border border-cyan/40 quantum-pulse"/><div className="absolute inset-6 rounded-full border border-dashed border-background/30 animate-spin [animation-duration:18s]"/><Trophy className="size-16 text-warning transition-transform duration-500 hover:rotate-12 hover:scale-125"/><span className="absolute bottom-0 font-mono text-xs">RANKED MISSION</span></div></div></Panel></Reveal></section>
+      <footer className="border-t border-border bg-card px-4 py-8"><div className="mx-auto flex max-w-[1500px] flex-col justify-between gap-4 text-sm text-muted-foreground md:flex-row"><b className="text-foreground">NeoQuantum Arena</b><span>Learn → Build → Simulate → Compete</span><span>SIH 2026 Prototype</span></div></footer>
+    </main></div>;
+}
